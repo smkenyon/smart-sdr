@@ -1,0 +1,11 @@
+#!/usr/bin/expect
+set timeout 20
+set name [lindex $argv 0]
+set port [lindex $argv 1]
+spawn telnet $name $port
+expect "Trying ::1..."
+send "F 88900000 \r"
+expect "RPRT 0"
+send "M WFM \r"
+expect "RPRT 0"
+interact
